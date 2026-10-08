@@ -12,6 +12,11 @@
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["actions/*", "github/*"],
       "automerge": true
+    },
+    {
+      "description": "Update pnpm in package.json and mise.toml together",
+      "matchDepNames": ["pnpm"],
+      "groupName": "pnpm"
     }
   ],
   "minimumReleaseAge": "14 days"

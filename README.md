@@ -27,6 +27,7 @@ When the URL must change, the extension replaces it. If you open a list from a l
 The extension uses [WXT](https://wxt.dev). You must have Node.js and pnpm.
 
 ```sh
+mise install        # Install Node.js and pnpm
 pnpm install
 pnpm dev            # Open Chrome with the extension
 pnpm dev:firefox    # Open Firefox with the extension
