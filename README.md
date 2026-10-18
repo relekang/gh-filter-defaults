@@ -22,6 +22,18 @@ The extension changes these pages:
 
 When the URL must change, the extension replaces it. If you open a list from a link on GitHub, the page loads two times.
 
+## Releases
+
+Release Please opens a version PR for release changes on `main` and enables auto-merge. It updates `package.json` and `CHANGELOG.md`. After the PR merges, the release workflow builds Chrome and Firefox ZIP files from the release commit. It uploads all ZIP files to a draft release before it publishes the release. Published releases are immutable.
+
+Repository setup:
+
+- Set the `GH_BOT_APP_ID` Actions variable and the `GH_BOT_PRIVATE_KEY` Actions secret. Install the GitHub App on this repository with write access to contents, issues, and pull requests.
+- Enable auto-merge and require CI checks on `main` so release PRs cannot merge before the checks pass.
+- Enable immutable releases in the repository settings.
+
+The workflow publishes GitHub release assets only. It does not publish to browser stores.
+
 ## Development
 
 The extension uses [WXT](https://wxt.dev). You must have Node.js and pnpm.
