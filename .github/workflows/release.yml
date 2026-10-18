@@ -9,6 +9,11 @@ on:
       sha:
         required: true
         type: string
+    secrets:
+      FIREFOX_JWT_ISSUER:
+        required: false
+      FIREFOX_JWT_SECRET:
+        required: false
 
 jobs:
   build:
@@ -55,3 +60,36 @@ jobs:
         run: |
           gh release upload "$TAG_NAME" artifacts/*.zip --clobber
           gh release edit "$TAG_NAME" --draft=false
+
+  publish-firefox:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+    steps:
+      - uses: actions/download-artifact@v8
+        if: env.FIREFOX_JWT_ISSUER != ''
+        with:
+          name: gh-filter-defaults-firefox
+          path: artifacts
+      - uses: pnpm/action-setup@v6
+        if: env.FIREFOX_JWT_ISSUER != ''
+        with:
+          version: 10.34.6
+      - uses: actions/setup-node@v7
+        if: env.FIREFOX_JWT_ISSUER != ''
+        with:
+          node-version: 24
+      - name: Submit Firefox extension to Mozilla
+        if: env.FIREFOX_JWT_ISSUER != ''
+        env:
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+          FIREFOX_EXTENSION_ID: "{01b776e4-a3fd-40a8-adcb-f7f5fee9ea52}"
+        run: |
+          : "${FIREFOX_JWT_SECRET:?Set the FIREFOX_JWT_SECRET repository secret}"
+          pnpm dlx publish-browser-extension@6.2.0 \
+            --firefox-channel listed \
+            --firefox-zip artifacts/*-firefox.zip \
+            --firefox-sources-zip artifacts/*-sources.zip

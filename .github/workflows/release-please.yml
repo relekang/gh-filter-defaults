@@ -36,6 +36,9 @@ jobs:
     permissions:
       contents: write
     uses: ./.github/workflows/release.yml
+    secrets:
+      FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+      FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
     with:
       tag_name: ${{ needs.release-please.outputs.tag_name }}
       sha: ${{ needs.release-please.outputs.sha }}

@@ -32,7 +32,13 @@ Repository setup:
 - Enable auto-merge and require CI checks on `main` so release PRs cannot merge before the checks pass.
 - Enable immutable releases in the repository settings.
 
-The workflow publishes GitHub release assets only. It does not publish to browser stores.
+### Firefox Add-ons
+
+After the GitHub release is published, the workflow submits the Firefox ZIP and source ZIP to the existing public listing on Mozilla Add-ons. Mozilla can require review before the update is available.
+
+To enable submissions, set the `FIREFOX_JWT_ISSUER` and `FIREFOX_JWT_SECRET` Actions secrets from [Mozilla's API keys page](https://addons.mozilla.org/developers/addon/api/key/). Leave `FIREFOX_JWT_ISSUER` unset until the first manual submission is approved. If it is unset, the workflow skips Firefox submission and still publishes the GitHub release. If it is set but `FIREFOX_JWT_SECRET` is missing, the submission step fails.
+
+The workflow does not publish to the Chrome Web Store.
 
 ## Development
 
