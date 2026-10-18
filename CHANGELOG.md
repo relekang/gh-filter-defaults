@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/relekang/gh-filter-defaults/compare/v1.0.1...v1.0.2) (2026-10-18)
+
+
+### Bug Fixes
+
+* Set Firefox extension ID ([45a2098](https://github.com/relekang/gh-filter-defaults/commit/45a2098d77a3eee16dc230e899d84481caf3cfdb))
+
 ## [1.0.1](https://github.com/relekang/gh-filter-defaults/compare/v1.0.0...v1.0.1) (2026-10-18)
 
 
