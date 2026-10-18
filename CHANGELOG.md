@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/relekang/gh-filter-defaults/compare/v1.0.0...v1.0.1) (2026-10-18)
+
+
+### Bug Fixes
+
+* Handle empty release PR output ([e8d82f7](https://github.com/relekang/gh-filter-defaults/commit/e8d82f745abd9a38c8e4263e3a9006f3f2c0c25a))
+
 ## 1.0.0 (2026-10-18)
 
 
