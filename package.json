@@ -1,6 +1,6 @@
 {
   "name": "gh-filter-defaults",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Change the default filters of GitHub pull request lists",
   "type": "module",
