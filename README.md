@@ -28,7 +28,7 @@ Release Please opens a version PR for release changes on `main` and enables auto
 
 Repository setup:
 
-- Set the `GH_BOT_APP_ID` Actions variable and the `GH_BOT_PRIVATE_KEY` Actions secret. Install the GitHub App on this repository with write access to contents, issues, and pull requests.
+- Set the `RELEASE_TOKEN` Actions secret to a personal access token with write access to contents, issues, and pull requests in this repository.
 - Enable auto-merge and require CI checks on `main` so release PRs cannot merge before the checks pass.
 - Enable immutable releases in the repository settings.
 
